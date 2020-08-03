@@ -23,7 +23,9 @@ public class Game {
             player.setFirstCard(deck.drawCard());
             player.setSecondCard(deck.drawCard());
         }
-
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("The Dealer deals second cards");
+        System.out.println("Each player now has the second card face down");
     }
     public void welcomeMessage(){
         System.out.println("WELCOME TO BLACKJACK");
@@ -32,6 +34,8 @@ public class Game {
         System.out.println("Enter your name: ");
         humanPlayerName = scanner.nextLine();
         System.out.println(humanPlayerName + "! You are playing against Chris, Laura, and Vlad");
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("The Dealer deals the cards:");
     }
     public void createPlayers(){
         Dealer dealer = new Dealer();
