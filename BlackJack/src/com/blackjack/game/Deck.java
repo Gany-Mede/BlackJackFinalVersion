@@ -30,7 +30,11 @@ public class Deck {
          public int getValue(){
              return this.value;
          }
+
     }
     private List<Cards> deck = Arrays.asList(Cards.values());
 
+    public void removeCard(Cards card){
+        deck.remove(card);
+    }
 }
