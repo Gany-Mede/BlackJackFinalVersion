@@ -1,15 +1,13 @@
 package com.blackjack.game;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Deck {
     private List<Card> deck;
     //a constructor to create a new deck of cards and shuffle them
+
     public Deck() {
-        deck = Arrays.asList(Card.values());
+        deck = new LinkedList<>(Arrays.asList(Card.values()));
         Collections.shuffle(deck);
     }
     //get one card from the already shuffled deck
@@ -19,7 +17,7 @@ public class Deck {
         deck.remove(0);
         return toReturn;
    }
-    enum Card{
+    public enum Card{
         TWO_HEARTS(2), THREE_HEARTS(3), FOUR_HEARTS(4), FIVE_HEARTS(5), SIX_HEARTS(6), SEVEN_HEARTS(7),
         EIGHT_HEARTS(8), NINE_HEARTS(9), TEN_HEARTS(10), JACK_HEARTS(10), QUEEN_HEARTS(10), KING_HEARTS(10),
         ACE_HEARTS(11),
@@ -37,10 +35,11 @@ public class Deck {
         ACE_DIAMONDS(11);
 
         private int value;
-
+        //constructor
         Card(int value){
             this.value = value;
         }
+        //
         public int getValue(){
             return this.value;
         }

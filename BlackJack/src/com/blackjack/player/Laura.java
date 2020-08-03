@@ -1,7 +1,10 @@
 package com.blackjack.player;
 
-public class Laura implements Player{
+import com.blackjack.game.Deck;
+
+public class Laura extends Player{
     int currentHand;
+
     @Override
     public void decision() {
 
