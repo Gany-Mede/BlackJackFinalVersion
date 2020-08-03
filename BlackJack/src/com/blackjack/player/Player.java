@@ -15,7 +15,7 @@ public abstract class Player {
     }
     public void showFirstCard(){
         if("HumanPlayer".equals(getClass().getSimpleName())){
-            System.out.println(Game.humanPlayerName + "'s first card is " + firstCard);
+            System.out.println("Your first card is " + firstCard);
         }
         else{
             System.out.println(this.getClass().getSimpleName() + "'s first card is " + firstCard);

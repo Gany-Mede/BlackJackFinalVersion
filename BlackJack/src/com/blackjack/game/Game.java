@@ -40,7 +40,7 @@ public class Game {
         Vlad vlad = new Vlad();
         HumanPlayer humanPlayer = new HumanPlayer();
 
-        players = Arrays.asList(dealer, chris, laura, vlad, humanPlayer);
+        players = Arrays.asList(humanPlayer,chris, laura, vlad,dealer);
 
     }
 
