@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.blackjack.game.BlackjackGUI">
+  <grid id="27dc6" binding="gameBoard" layout-manager="GridLayoutManager" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="19" y="20" width="681" height="400"/>
+    </constraints>
+    <properties>
+      <background color="-16105209"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="d0437" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1312769"/>
+          <font name="Arial" size="18" style="1"/>
+          <foreground color="-394759"/>
+          <text value="DEALER"/>
+        </properties>
+      </component>
+      <component id="15b46" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1247233"/>
+          <font name="Arial" size="18" style="1"/>
+          <foreground color="-65794"/>
+          <text value="Laura"/>
+        </properties>
+      </component>
+      <component id="9d6fb" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1378819"/>
+          <font name="Arial" size="18" style="1"/>
+          <foreground color="-328966"/>
+          <text value="Chris"/>
+        </properties>
+      </component>
+      <component id="85186" class="javax.swing.JButton" binding="STAYButton" default-binding="true">
+        <constraints>
+          <grid row="2" column="1" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="6" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-2681562"/>
+          <text value="STAY"/>
+        </properties>
+      </component>
+      <component id="254d4" class="javax.swing.JButton" binding="HITButton" default-binding="true">
+        <constraints>
+          <grid row="2" column="2" row-span="2" col-span="1" vsize-policy="3" hsize-policy="0" anchor="6" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-16016580"/>
+          <text value="HIT"/>
+        </properties>
+      </component>
+      <component id="21dea" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1444612"/>
+          <font name="Arial" size="18" style="1"/>
+          <foreground color="-131587"/>
+          <text value="Vlad"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
