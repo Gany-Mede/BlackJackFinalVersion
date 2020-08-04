@@ -10,14 +10,16 @@ public class Deck {
         deck = new LinkedList<>(Arrays.asList(Card.values()));
         Collections.shuffle(deck);
     }
+
     //get one card from the already shuffled deck
     //and the delete the card from the deck
-    public Card drawCard(){
+    public Card drawCard() {
         Card toReturn = deck.get(0);
         deck.remove(0);
         return toReturn;
-   }
-    public enum Card{
+    }
+
+    public enum Card {
         TWO_HEARTS(2), THREE_HEARTS(3), FOUR_HEARTS(4), FIVE_HEARTS(5), SIX_HEARTS(6), SEVEN_HEARTS(7),
         EIGHT_HEARTS(8), NINE_HEARTS(9), TEN_HEARTS(10), JACK_HEARTS(10), QUEEN_HEARTS(10), KING_HEARTS(10),
         ACE_HEARTS(11),
@@ -35,12 +37,13 @@ public class Deck {
         ACE_DIAMONDS(11);
 
         private int value;
+
         //constructor
-        Card(int value){
+        Card(int value) {
             this.value = value;
         }
-        //
-        public int getValue(){
+
+        public int getValue() {
             return this.value;
         }
     }

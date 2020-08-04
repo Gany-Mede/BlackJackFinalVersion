@@ -7,6 +7,6 @@ public class Vlad extends Player {
 
     @Override
     public boolean decision() {
-        return currentHandValue<19;
+        return currentHandValue < 19;
     }
 }
