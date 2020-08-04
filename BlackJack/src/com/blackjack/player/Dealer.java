@@ -6,7 +6,7 @@ public class Dealer extends Player {
 
     @Override
     public boolean decision() {
-        return currentHandValue < 17;
+        return getCurrentHandValue() < 17;
     }
 
 }

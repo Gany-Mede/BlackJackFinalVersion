@@ -7,6 +7,6 @@ public class Laura extends Player {
 
     @Override
     public boolean decision() {
-        return currentHandValue < 15;
+        return getCurrentHandValue() < 15;
     }
 }

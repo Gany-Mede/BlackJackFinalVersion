@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Player {
-    int currentHandValue;
+    private int currentHandValue;
     //a list of cards each person has on hand at the moment
     List<Deck.Card> cardsOnHand = new ArrayList<>();
 
@@ -40,12 +40,20 @@ public abstract class Player {
             sum = sum - 10;
             aces--;
         }
-        currentHandValue = sum;
+        setCurrentHandValue(sum);
         return sum;
     }
 
     public List<Deck.Card> revealCards() {
         return cardsOnHand;
+    }
+
+    public int getCurrentHandValue() {
+        return currentHandValue;
+    }
+
+    public void setCurrentHandValue(int currentHandValue) {
+        this.currentHandValue = currentHandValue;
     }
 
     public abstract boolean decision();

@@ -11,6 +11,6 @@ public class Chris extends Player {
         int toStay;
         Random random = new Random();
         toStay = random.nextInt(18 - 15) + 15;
-        return currentHandValue < toStay;
+        return getCurrentHandValue() < toStay;
     }
 }

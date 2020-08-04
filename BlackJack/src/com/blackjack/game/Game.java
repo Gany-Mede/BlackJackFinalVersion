@@ -65,8 +65,8 @@ public class Game {
     public void stayOrHit() throws InterruptedException {
         boolean toHit;
         do {
-            System.out.println("Would you like to STAY or HIT? Type \"s\" to stay and \"h\" to get another card");
-            String choice = scanner.nextLine().toLowerCase();
+            System.out.println("Would you like to STAY or HIT? Type \"s\" to stay or \"h\" to get another card");
+            String choice = evaluateHitOrStayInput(scanner.nextLine().toLowerCase());
             toHit = "h".equals(choice);
             if (toHit) {
                 humanPlayer.drawCards(hit());
@@ -90,14 +90,32 @@ public class Game {
     public Deck.Card hit() {
         return deck.drawCard();
     }
-
+    public String evaluateHitOrStayInput(String choice){
+        String toReturn = null;
+        boolean wrongInput;
+        if (choice.equals("s") || choice.equals("h")){
+            return choice;
+        }
+        else {
+            wrongInput = true;
+        }
+        while(wrongInput){
+            System.out.println("Please enter valid input, Type \"s\" to STAY or \"h\" to HIT");
+            toReturn = scanner.nextLine().toLowerCase();
+            if(toReturn.equals("s") || toReturn.equals("h")){
+                wrongInput = false;
+            }
+        }
+        return toReturn;
+    }
     public void botNextMove() {
         for (Player player : players) {
             if ("HumanPlayer".equals(player.getClass().getSimpleName())) {
                 continue;
             }
-            if (player.decision()) {
+            while(player.decision()){
                 player.drawCards(hit());
+                player.setCurrentHandValue(player.countCardValue());
             }
         }
     }
@@ -150,7 +168,7 @@ public class Game {
 
     public void playAgain() throws InterruptedException {
         System.out.println("Would you like to play again? Type \"y\" for yes, and \"n\" for no");
-        String reply = scanner.nextLine().toLowerCase();
+        String reply = evaluatePlayAgainInput(scanner.nextLine().toLowerCase());
         if ("y".equals(reply)) {
             start();
         } else {
@@ -158,5 +176,23 @@ public class Game {
             scanner.close();
             System.exit(0);
         }
+    }
+    public String evaluatePlayAgainInput(String input){
+        String toReturn = null;
+        boolean wrongInput;
+        if (input.equals("y") || input.equals("n")){
+            return input;
+        }
+        else {
+            wrongInput = true;
+        }
+        while(wrongInput){
+            System.out.println("Please enter valid input, Type \"y\" for to PLAY again, and \"n\" to QUIT");
+            toReturn = scanner.nextLine().toLowerCase();
+            if(toReturn.equals("y") || toReturn.equals("n")){
+                wrongInput = false;
+            }
+        }
+        return toReturn;
     }
 }
