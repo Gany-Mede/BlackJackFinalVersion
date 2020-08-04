@@ -3,36 +3,49 @@ package com.blackjack.player;
 import com.blackjack.game.Deck;
 import com.blackjack.game.Game;
 
-public abstract class Player {
-     int currentHand;
-     Deck.Card firstCard;
-     Deck.Card secondCard;
+import java.util.ArrayList;
+import java.util.List;
 
-    //set first card then reveal it
-    public void setFirstCard(Deck.Card card){
-        this.firstCard = card;
-        showFirstCard();
+public abstract class Player {
+     int currentHandValue;
+     //a list of cards each person has on hand at the moment
+     List<Deck.Card> cardsOnHand = new ArrayList<>();
+
+
+    public void drawCards(Deck.Card card){
+        cardsOnHand.add(card);
     }
+    //reveal the first card
     public void showFirstCard(){
         if("HumanPlayer".equals(getClass().getSimpleName())){
-            System.out.println("Your first card is " + firstCard);
+            System.out.println("Your first card is " + cardsOnHand.get(0));
         }
         else{
-            System.out.println(this.getClass().getSimpleName() + "'s first card is " + firstCard);
+            System.out.println(this.getClass().getSimpleName() + "'s first card is " + cardsOnHand.get(0));
         }
     }
-    public void setSecondCard(Deck.Card card){
-        this.secondCard = card;
+    //count the card value with aces in mind
+    public int countCardValue(){
+        int sum = 0;
+        int aces= 0;
+
+        for(Deck.Card card : cardsOnHand){
+            if (card.toString().contains("ACE")){
+                aces++;
+            }
+            sum = sum + card.getValue();
+        }
+        if (sum>21 && aces>0){
+            sum = sum -10;
+            aces--;
+        }
+        currentHandValue = sum;
+        return sum;
+    }
+    public List<Deck.Card> revealCards(){
+       return cardsOnHand;
     }
 
-    public Deck.Card getFirstCard() {
-        return firstCard;
-    }
-
-    public Deck.Card getSecondCard() {
-        return secondCard;
-    }
-
-    public abstract void decision();
+    public abstract boolean decision();
 
 }
