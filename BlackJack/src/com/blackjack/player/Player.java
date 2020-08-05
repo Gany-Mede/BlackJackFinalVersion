@@ -8,7 +8,7 @@ import java.util.List;
 public abstract class Player {
     private int currentHandValue;
     //a list of cards each person has on hand at the moment
-    private List<Deck.Card> cardsOnHand = new ArrayList<>();
+    public List<Deck.Card> cardsOnHand = new ArrayList<>();
 
 
     public void drawCards(Deck.Card card) {
@@ -36,8 +36,8 @@ public abstract class Player {
             sum = sum + card.getValue();
         }
         if (sum > 21 && aces > 0) {
-            sum = sum - 10;
             aces--;
+            sum = sum - 10;
         }
         setCurrentHandValue(sum);
         return sum;
