@@ -12,16 +12,14 @@ import java.util.List;
 import static org.junit.Assert.assertNotSame;
 
 public class GameTest {
-    private int currentHandValue;
-    List<Player> players;
-
 
     @Test
     public void testThreeAces(){
         Chris chris = new Chris();
         chris.cardsOnHand.add(Deck.Card.ACE_CLUBS);
         chris.cardsOnHand.add(Deck.Card.ACE_DIAMONDS);
-        Assert.assertEquals(12, chris.countCardValue());//
+        chris.cardsOnHand.add(Deck.Card.ACE_HEARTS);
+        Assert.assertEquals(13, chris.countCardValue());//
     }
 
     @Test

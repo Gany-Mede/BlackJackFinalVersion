@@ -35,9 +35,9 @@ public abstract class Player {
             }
             sum = sum + card.getValue();
         }
-        if (sum > 21 && aces > 0) {
+        while(aces>0 && sum>21){
+            sum = sum -10;
             aces--;
-            sum = sum - 10;
         }
         setCurrentHandValue(sum);
         return sum;
