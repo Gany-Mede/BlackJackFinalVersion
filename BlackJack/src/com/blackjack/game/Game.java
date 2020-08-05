@@ -192,7 +192,7 @@ public class Game {
     }
 
     private void playAgain() throws InterruptedException {
-        System.out.println("Would you like to play again? Type \"y\" for yes, and \"n\" for no");
+        System.out.println("\nWould you like to play again? Type \"y\" for yes, and \"n\" for no");
         String reply = evaluatePlayAgainInput(scanner.nextLine().toLowerCase());
         if ("y".equals(reply)) {
             start();
