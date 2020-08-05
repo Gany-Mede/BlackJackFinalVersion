@@ -43,8 +43,7 @@ public class Game {
         File welcomeBanner = new File("BlackJack/images/welcome.txt");
         Scanner welcomeScanner = new Scanner(welcomeBanner);
         while(welcomeScanner.hasNextLine()) {
-            String data = welcomeScanner.nextLine();
-            System.out.println(data);
+            System.out.println(welcomeScanner.nextLine());
         }
     }
     private void welcomeMessage() {
