@@ -1,12 +1,8 @@
 package com.blackjack.game;
 
 import com.blackjack.player.*;
-import jdk.swing.interop.SwingInterOpUtils;
-
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 
 public class Game {
@@ -25,11 +21,11 @@ public class Game {
             System.out.println(e);;
         }
         System.out.println("~BROUGHT TO YOU BY INTERNATIONAL 21~");
-        System.out.println("----------------------------------------------");
-        System.out.println(" Here are the rules: The goal is to be the player that gets exactly 21" +
+        System.out.println("----------------------------------------------------------------------");
+        System.out.println(" Here are the rules: \n The goal is to be the player that gets exactly 21" +
                 "\n or as close to 21 as possible without going over. \n Each card is worth its face value." +
-                "\n Jack, Queen, and King are worth 10 points. \n Aces can be worth either 1 or 11 points (whichever is more favorable).");
-        System.out.println("----------------------------------------------");
+                "\n Jack, Queen, and King are worth 10 points. \n Aces can be worth either 1 or 11 points (whichever is more favorable)");
+        System.out.println("----------------------------------------------------------------------");
         System.out.println("Enter your name: ");
         humanPlayerName = scanner.nextLine();
     }
@@ -147,15 +143,22 @@ public class Game {
         for (Player player : players) {
             Thread.sleep(1000);
             if ("HumanPlayer".equals(player.getClass().getSimpleName())) {
-                System.out.println("Your cards are: " + humanPlayer.revealCards() + " with a value of: " + humanPlayer.countCardValue());
+                System.out.print("\nYour cards are: " + humanPlayer.revealCards() + " with a value of: " + humanPlayer.countCardValue());
+                isOver21(humanPlayer.countCardValue());
             } else {
-                System.out.println(player.getClass().getSimpleName() + "'s cards are: " + player.revealCards() + ", with value of: " + player.countCardValue());
+                System.out.print("\n"+player.getClass().getSimpleName() + "'s cards are: " + player.revealCards() + ", with value of: " +
+                        player.countCardValue());
+                isOver21(player.countCardValue());
             }
         }
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         determineWinner();
     }
 
+        private void isOver21(int score){
+        String toReturn = score>21 ? "!BUST!" : "";
+            System.out.print(" " + toReturn);
+    }
     private void determineWinner() throws InterruptedException {
         //creating an arraylist in case we have more than one winner (tie)
         List<Player> winner = new ArrayList<>();
