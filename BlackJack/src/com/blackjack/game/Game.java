@@ -5,13 +5,13 @@ import com.blackjack.player.*;
 import java.util.*;
 
 public class Game {
-    int timesPlayed = 0;
-    int timesWon = 0;
-    public static Deck deck;
-    List<Player> players;
-    HumanPlayer humanPlayer;
+    private int timesPlayed = 0;
+    private int timesWon = 0;
+    private Deck deck;
+    private List<Player> players;
+    private HumanPlayer humanPlayer;
     private static final String humanPlayerName;
-    static Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
 
     static {
         System.out.println("WELCOME TO BLACKJACK");
@@ -21,7 +21,7 @@ public class Game {
         humanPlayerName = scanner.nextLine();
     }
 
-    public void start() throws InterruptedException {
+    protected void start() throws InterruptedException {
         timesPlayed++;
         deck = new Deck();
         welcomeMessage();
@@ -29,16 +29,15 @@ public class Game {
         dealCards();
         botNextMove();
         stayOrHit();
-
     }
 
-    public void welcomeMessage() {
+    private void welcomeMessage() {
         System.out.println(humanPlayerName + "! You are playing against Chris, Laura, and Vlad");
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         System.out.println("The Dealer deals the cards:\n");
     }
 
-    public void createPlayers() {
+    private void createPlayers() {
         Dealer dealer = new Dealer();
         Chris chris = new Chris();
         Laura laura = new Laura();
@@ -46,8 +45,9 @@ public class Game {
         humanPlayer = new HumanPlayer();
         players = Arrays.asList(humanPlayer, chris, laura, vlad, dealer);
     }
+
     //draw initial two cards per player
-    public void dealCards() throws InterruptedException {
+    private void dealCards() throws InterruptedException {
         for (Player player : players) {
             player.drawCards(deck.drawCard());
             Thread.sleep(1000);
@@ -57,12 +57,13 @@ public class Game {
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         Thread.sleep(1000);
         System.out.println("The Dealer deals each player a second card...");
+        Thread.sleep(1000);
         System.out.println("Each player now has the second card face down.\n");
         System.out.println("Your cards are: " + humanPlayer.revealCards() + ", with value of: " + humanPlayer.countCardValue());
         Thread.sleep(2000);
     }
 
-    public void stayOrHit() throws InterruptedException {
+    private void stayOrHit() throws InterruptedException {
         boolean toHit;
         do {
             System.out.println("Would you like to STAY or HIT? Type \"s\" to stay or \"h\" to get another card");
@@ -87,40 +88,41 @@ public class Game {
         while (toHit);
     }
 
-    public Deck.Card hit() {
+    private Deck.Card hit() {
         return deck.drawCard();
     }
-    public String evaluateHitOrStayInput(String choice){
+
+    private String evaluateHitOrStayInput(String choice) {
         String toReturn = null;
         boolean wrongInput;
-        if (choice.equals("s") || choice.equals("h")){
+        if (choice.equals("s") || choice.equals("h")) {
             return choice;
-        }
-        else {
+        } else {
             wrongInput = true;
         }
-        while(wrongInput){
+        while (wrongInput) {
             System.out.println("Please enter valid input, Type \"s\" to STAY or \"h\" to HIT");
             toReturn = scanner.nextLine().toLowerCase();
-            if(toReturn.equals("s") || toReturn.equals("h")){
+            if (toReturn.equals("s") || toReturn.equals("h")) {
                 wrongInput = false;
             }
         }
         return toReturn;
     }
-    public void botNextMove() {
+
+    private void botNextMove() {
         for (Player player : players) {
             if ("HumanPlayer".equals(player.getClass().getSimpleName())) {
                 continue;
             }
-            while(player.decision()){
+            while (player.decision()) {
                 player.drawCards(hit());
                 player.setCurrentHandValue(player.countCardValue());
             }
         }
     }
 
-    public void revealAll() throws InterruptedException {
+    private void revealAll() throws InterruptedException {
         System.out.println("\nRevealing each player's cards...");
         for (Player player : players) {
             Thread.sleep(1000);
@@ -134,7 +136,7 @@ public class Game {
         determineWinner();
     }
 
-    public void determineWinner() throws InterruptedException {
+    private void determineWinner() throws InterruptedException {
         //creating an arraylist in case we have more than one winner (tie)
         List<Player> winner = new ArrayList<>();
         for (Player player : players) {
@@ -166,7 +168,7 @@ public class Game {
         playAgain();
     }
 
-    public void playAgain() throws InterruptedException {
+    private void playAgain() throws InterruptedException {
         System.out.println("Would you like to play again? Type \"y\" for yes, and \"n\" for no");
         String reply = evaluatePlayAgainInput(scanner.nextLine().toLowerCase());
         if ("y".equals(reply)) {
@@ -177,23 +179,22 @@ public class Game {
             System.exit(0);
         }
     }
-    public String evaluatePlayAgainInput(String input){
+
+    private String evaluatePlayAgainInput(String input) {
         String toReturn = null;
         boolean wrongInput;
-        if (input.equals("y") || input.equals("n")){
+        if (input.equals("y") || input.equals("n")) {
             return input;
-        }
-        else {
+        } else {
             wrongInput = true;
         }
-        while(wrongInput){
+        while (wrongInput) {
             System.out.println("Please enter valid input, Type \"y\" for to PLAY again, and \"n\" to QUIT");
             toReturn = scanner.nextLine().toLowerCase();
-            if(toReturn.equals("y") || toReturn.equals("n")){
+            if (toReturn.equals("y") || toReturn.equals("n")) {
                 wrongInput = false;
             }
         }
         return toReturn;
     }
-
 }

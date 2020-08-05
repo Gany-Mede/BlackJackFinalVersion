@@ -1,7 +1,6 @@
 package com.blackjack.player;
 
 import com.blackjack.game.Deck;
-import com.blackjack.game.Game;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +8,7 @@ import java.util.List;
 public abstract class Player {
     private int currentHandValue;
     //a list of cards each person has on hand at the moment
-    List<Deck.Card> cardsOnHand = new ArrayList<>();
+    private List<Deck.Card> cardsOnHand = new ArrayList<>();
 
 
     public void drawCards(Deck.Card card) {
@@ -57,5 +56,4 @@ public abstract class Player {
     }
 
     public abstract boolean decision();
-
 }

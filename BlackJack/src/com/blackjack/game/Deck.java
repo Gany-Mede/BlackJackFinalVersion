@@ -4,8 +4,8 @@ import java.util.*;
 
 public class Deck {
     private List<Card> deck;
-    //a constructor to create a new deck of cards and shuffle them
 
+    //a constructor to create a new deck of cards and shuffle them
     public Deck() {
         deck = new LinkedList<>(Arrays.asList(Card.values()));
         Collections.shuffle(deck);
