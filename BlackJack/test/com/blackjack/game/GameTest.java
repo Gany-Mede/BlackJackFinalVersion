@@ -1,19 +1,19 @@
 package com.blackjack.game;
 
-import com.blackjack.player.*;
+import com.blackjack.player.Player;
 import org.junit.Before;
 import org.junit.Test;
-import java.lang.Thread;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import static com.blackjack.game.Game.deck;
 import static org.junit.Assert.assertNotSame;
 
 public class GameTest {
     private int currentHandValue;
     List<Player> players;
+
+    @Before
 
     @Test
     public void testShowFirstCard(){
@@ -53,13 +53,13 @@ public class GameTest {
 //        }
 //    }
 
-    @Test
-    public void testBotPlayerDecision() {
-        List<Deck.Card>cardsOnHand = new ArrayList<>();
-        drawCards(cardsOnHand);
-        dealCards();
-
-    }
+//    @Test
+//    public void testBotPlayerDecision() {
+//        List<Deck.Card>cardsOnHand = new ArrayList<>();
+//        drawCards(cardsOnHand);
+//        dealCards();
+//
+//    }
 
 
 
