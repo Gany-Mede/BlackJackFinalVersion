@@ -21,7 +21,7 @@ public class GameTest {
         Chris chris = new Chris();
         chris.cardsOnHand.add(Deck.Card.ACE_CLUBS);
         chris.cardsOnHand.add(Deck.Card.ACE_DIAMONDS);
-        Assert.assertEquals(12, chris.countCardValue());
+        Assert.assertEquals(12, chris.countCardValue());//
     }
 
     @Test
