@@ -10,8 +10,6 @@ import java.util.List;
 
 public class DeckTest extends TestCase {
 
-
-
     private List<Deck.Card> deck;
 
     @Test

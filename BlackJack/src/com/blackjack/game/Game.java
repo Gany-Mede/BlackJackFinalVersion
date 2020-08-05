@@ -1,7 +1,12 @@
 package com.blackjack.game;
 
 import com.blackjack.player.*;
+import jdk.swing.interop.SwingInterOpUtils;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class Game {
@@ -14,9 +19,17 @@ public class Game {
     private static Scanner scanner = new Scanner(System.in);
 
     static {
-        System.out.println("WELCOME TO BLACKJACK");
-        System.out.println("BROUGHT TO YOU BY INTERNATIONAL 21");
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        try {
+            printBanner();
+        } catch (IOException e) {
+            System.out.println(e);;
+        }
+        System.out.println("~BROUGHT TO YOU BY INTERNATIONAL 21~");
+        System.out.println("----------------------------------------------");
+        System.out.println(" Here are the rules: The goal is to be the player that gets exactly 21" +
+                "\n or as close to 21 as possible without going over. \n Each card is worth its face value." +
+                "\n Jack, Queen, and King are worth 10 points. \n Aces can be worth either 1 or 11 points (whichever is more favorable).");
+        System.out.println("----------------------------------------------");
         System.out.println("Enter your name: ");
         humanPlayerName = scanner.nextLine();
     }
@@ -30,7 +43,14 @@ public class Game {
         botNextMove();
         stayOrHit();
     }
-
+    private static void printBanner() throws IOException {
+        File welcomeBanner = new File("BlackJack/images/welcome.txt");
+        Scanner welcomeScanner = new Scanner(welcomeBanner);
+        while(welcomeScanner.hasNextLine()) {
+            String data = welcomeScanner.nextLine();
+            System.out.println(data);
+        }
+    }
     private void welcomeMessage() {
         System.out.println(humanPlayerName + "! You are playing against Chris, Laura, and Vlad");
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
