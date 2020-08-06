@@ -5,14 +5,17 @@ import java.util.*;
 public class Deck {
     private List<Card> deck;
 
-    //a constructor to create a new deck of cards and shuffle them
+    /**
+     * a constructor to create a new deck of cards and shuffle them
+     */
     public Deck() {
         deck = new LinkedList<>(Arrays.asList(Card.values()));
         Collections.shuffle(deck);
     }
-
-    //get one card from the already shuffled deck
-    //and the delete the card from the deck
+    /**
+     * Get one card from the already shuffled deck and then remove that card from the deck automatically
+     * @return Card
+     */
     public Card drawCard() {
         Card toReturn = deck.get(0);
         deck.remove(0);
@@ -38,11 +41,18 @@ public class Deck {
 
         private int value;
 
-        //constructor
+        /**
+         *
+         * @param value
+         */
         Card(int value) {
             this.value = value;
         }
 
+        /**
+         *
+         * @return value for the card drawn
+         */
         public int getValue() {
             return this.value;
         }

@@ -3,8 +3,10 @@ package com.blackjack.player;
 import java.util.Random;
 
 public class Chris extends Player {
-
-    //Chris Bot is going to stay randomly between 15 and 18
+    /**
+     * Chris Bot is going to stay randomly between 15 and 18
+     * @return
+     */
     @Override
     public boolean decision() {
         int toStay;

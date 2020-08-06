@@ -1,6 +1,7 @@
 package com.blackjack.game;
 
 import com.blackjack.player.*;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
@@ -18,7 +19,8 @@ public class Game {
         try {
             printBanner();
         } catch (IOException e) {
-            System.out.println(e);;
+            System.out.println(e);
+            ;
         }
         System.out.println("~BROUGHT TO YOU BY INTERNATIONAL 21~");
         System.out.println("----------------------------------------------------------------------");
@@ -30,6 +32,9 @@ public class Game {
         humanPlayerName = scanner.nextLine();
     }
 
+    /** Starts the game by calling other methods
+     * @throws InterruptedException
+     */
     protected void start() throws InterruptedException {
         timesPlayed++;
         deck = new Deck();
@@ -39,13 +44,18 @@ public class Game {
         botNextMove();
         stayOrHit();
     }
+
+    /**
+     * @throws IOException
+     */
     private static void printBanner() throws IOException {
         File welcomeBanner = new File("BlackJack/images/welcome.txt");
         Scanner welcomeScanner = new Scanner(welcomeBanner);
-        while(welcomeScanner.hasNextLine()) {
+        while (welcomeScanner.hasNextLine()) {
             System.out.println(welcomeScanner.nextLine());
         }
     }
+
     private void welcomeMessage() {
         System.out.println(humanPlayerName + "! You are playing against Chris, Laura, and Vlad");
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -61,6 +71,9 @@ public class Game {
         players = Arrays.asList(humanPlayer, chris, laura, vlad, dealer);
     }
 
+    /**
+     * @throws InterruptedException
+     */
     //draw initial two cards per player
     private void dealCards() throws InterruptedException {
         for (Player player : players) {
@@ -78,6 +91,9 @@ public class Game {
         Thread.sleep(2000);
     }
 
+    /**
+     * @throws InterruptedException
+     */
     private void stayOrHit() throws InterruptedException {
         boolean toHit;
         do {
@@ -103,10 +119,16 @@ public class Game {
         while (toHit);
     }
 
+    /**
+     * @return returns a card from the deck
+     */
     private Deck.Card hit() {
         return deck.drawCard();
     }
-
+    /**
+     * @param choice To stay or hit prompt
+     * @return an output based on what the user chose
+     */
     private String evaluateHitOrStayInput(String choice) {
         String toReturn = null;
         boolean wrongInput;
@@ -136,7 +158,9 @@ public class Game {
             }
         }
     }
-
+    /**
+     * @throws InterruptedException
+     */
     private void revealAll() throws InterruptedException {
         System.out.println("\nRevealing each player's cards...");
         for (Player player : players) {
@@ -145,7 +169,7 @@ public class Game {
                 System.out.print("\nYour cards are: " + humanPlayer.revealCards() + " with a value of: " + humanPlayer.countCardValue());
                 isOver21(humanPlayer.countCardValue());
             } else {
-                System.out.print("\n"+player.getClass().getSimpleName() + "'s cards are: " + player.revealCards() + ", with value of: " +
+                System.out.print("\n" + player.getClass().getSimpleName() + "'s cards are: " + player.revealCards() + ", with value of: " +
                         player.countCardValue());
                 isOver21(player.countCardValue());
             }
@@ -153,11 +177,18 @@ public class Game {
         System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         determineWinner();
     }
-
-        private void isOver21(int score){
-        String toReturn = score>21 ? "!BUST!" : "";
-            System.out.print(" " + toReturn);
+    /**
+     *
+     * @param score prints BUST if a player gets over 21
+     */
+    private void isOver21(int score) {
+        String toReturn = score > 21 ? "!BUST!" : "";
+        System.out.print(" " + toReturn);
     }
+    /**
+     * Determine the winner
+     * @throws InterruptedException
+     */
     private void determineWinner() throws InterruptedException {
         //creating an arraylist in case we have more than one winner (tie)
         List<Player> winner = new ArrayList<>();
@@ -189,7 +220,10 @@ public class Game {
         Thread.sleep(1000);
         playAgain();
     }
-
+    /**
+     * Prompt user to play again
+     * @throws InterruptedException
+     */
     private void playAgain() throws InterruptedException {
         System.out.println("\nWould you like to play again? Type \"y\" for yes, and \"n\" for no");
         String reply = evaluatePlayAgainInput(scanner.nextLine().toLowerCase());
@@ -201,7 +235,11 @@ public class Game {
             System.exit(0);
         }
     }
-
+    /**
+     *
+     * @param input
+     * @return Input validation to play again or not
+     */
     private String evaluatePlayAgainInput(String input) {
         String toReturn = null;
         boolean wrongInput;
