@@ -121,7 +121,7 @@ public class Game {
     /**
      * @return returns a card from the deck
      */
-    protected Deck.Card hit() {
+    private Deck.Card hit() {
         return deck.drawCard();
     }
     /**
