@@ -20,7 +20,6 @@ public class Game {
             printBanner();
         } catch (IOException e) {
             System.out.println(e);
-            ;
         }
         System.out.println("~BROUGHT TO YOU BY INTERNATIONAL 21~");
         System.out.println("----------------------------------------------------------------------");
@@ -49,7 +48,7 @@ public class Game {
      * @throws IOException
      */
     private static void printBanner() throws IOException {
-        File welcomeBanner = new File("BlackJack/images/welcome.txt");
+        File welcomeBanner = new File("images/welcome.txt");
         Scanner welcomeScanner = new Scanner(welcomeBanner);
         while (welcomeScanner.hasNextLine()) {
             System.out.println(welcomeScanner.nextLine());
