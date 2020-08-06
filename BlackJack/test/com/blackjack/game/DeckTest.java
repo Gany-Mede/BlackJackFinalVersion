@@ -2,7 +2,6 @@ package com.blackjack.game;
 
 import junit.framework.TestCase;
 import org.junit.Test;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
