@@ -14,7 +14,9 @@ public abstract class Player {
      * @param card
      */
     public void drawCards(Deck.Card card) {
+
         cardsOnHand.add(card);
+        setCurrentHandValue(countCardValue());
     }
     /**
      * Reveal the first card

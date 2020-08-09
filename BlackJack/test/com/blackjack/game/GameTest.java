@@ -3,7 +3,6 @@ package com.blackjack.game;
 import com.blackjack.player.*;
 import org.junit.Assert;
 import org.junit.Test;
-import static org.junit.Assert.assertNotSame;
 
 public class GameTest {
 
@@ -16,13 +15,4 @@ public class GameTest {
         Assert.assertEquals(13, chris.countCardValue());//
     }
 
-//    @Test
-//    public void testShowFirstCard() {
-//        Game game = new Game();
-//        Laura laura = new Laura();
-//        laura.drawCards(game.hit());
-//        Vlad vlad = new Vlad();
-//        vlad.drawCards(game.hit());
-//        assertNotSame(vlad.cardsOnHand, laura.cardsOnHand);
-//    }
 }
